@@ -1,13 +1,10 @@
-FROM nginx:1.9.9
-MAINTAINER Jason Wilder mail@jasonwilder.com
+FROM alpine-nginx
 
-# Install wget and install/updates certificates
-RUN apt-get update \
- && apt-get install -y -q --no-install-recommends \
-    ca-certificates \
-    wget \
- && apt-get clean \
- && rm -r /var/lib/apt/lists/*
+# Install wget
+RUN apk --update add \
+    wget && \
+    rm -rf /var/cache/apk/*
+
 
 # Configure Nginx and apply fix for very long server names
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf \
