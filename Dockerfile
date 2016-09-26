@@ -1,5 +1,7 @@
 FROM alpine-nginx
 
+MAINTAINER Open Source Services [opensourceservices.fr]
+
 # Install wget
 RUN apk --update add \
     wget && \
